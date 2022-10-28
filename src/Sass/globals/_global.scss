@@ -1,0 +1,7 @@
+@use "../util/index2" as *;
+
+body {
+  font-family: "Inter", sans-serif;
+  // font-family: 'Karla', sans-serif;
+  background-color: $bg-color;
+}

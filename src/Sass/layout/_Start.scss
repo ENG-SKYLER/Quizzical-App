@@ -1,0 +1,44 @@
+@use "../util/index2" as *;
+.start {
+  display: none;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  h1 {
+    font-family: "Karla", sans-serif;
+    font-size: rem(31.25);
+    font-weight: 700;
+    color: $text-color;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: rem(16);
+    font-weight: 300;
+    color: $text-color;
+    margin-top: rem(11);
+  }
+  button {
+    border: none;
+    padding: rem(16.25) rem(58.91) rem(16.75) rem(59.09);
+    border-radius: rem(15);
+    background-color: $btn-color;
+    color: $btn-text-color;
+    margin-top: rem(29);
+    font-weight: 500;
+  }
+  .pattern1,
+  .pattern2 {
+    position: absolute;
+  }
+  .pattern1 {
+    top: 0;
+    right: 0;
+  }
+  .pattern2 {
+    bottom: 0;
+    left: 0;
+  }
+}
