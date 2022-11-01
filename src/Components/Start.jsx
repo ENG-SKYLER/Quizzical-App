@@ -2,7 +2,6 @@ import React from 'react'
 import pattern1  from '../Assets/blue-pattern.svg'
 import pattern2  from '../Assets/yellow-pattern.svg'
 
-
 function Start() {
   return (
     <div className='start'>
