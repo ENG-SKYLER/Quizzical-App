@@ -326,7 +326,6 @@ body {
 
 .form {
   text-align: center;
-  border-bottom: 1px solid gray;
 }
 .form h1 {
   font-family: "Karla", sans-serif;
@@ -337,4 +336,23 @@ body {
 .form .answers {
   display: flex;
   justify-content: center;
+}
+.form .answers > div {
+  margin-right: 1rem;
+}
+.form .answers > div input[type=radio] {
+  display: none;
+}
+.form .answers > div input[type=radio]:checked + label {
+  background-color: #d6dbf5;
+  border-color: #d6dbf5;
+}
+.form .answers > div label {
+  position: relative;
+  font-weight: 500;
+  color: #293264;
+  font-size: 1.125rem;
+  padding: 10px;
+  border: 1px solid #4d5b9e;
+  border-radius: 0.5rem;
 }/*# sourceMappingURL=App.css.map */
