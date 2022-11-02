@@ -348,6 +348,7 @@ body {
   border-color: #d6dbf5;
 }
 .form .answers > div label {
+  cursor: pointer;
   position: relative;
   font-weight: 500;
   color: #293264;
