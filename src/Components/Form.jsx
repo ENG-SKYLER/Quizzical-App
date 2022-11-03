@@ -1,31 +1,32 @@
-import React from 'react'
+import React from 'react';
+import {encode} from 'html-entities';
 
-function Form() {
+function Form(props) {
   return (
     <div className="container">
 
 
 <div className='form'>
-<h1>if the question will be visible to view in the selection board</h1>
+<h1>{props.quiz} </h1>
       <div className='answers'>
                   <div>
-                  <input type="radio" name="ans" id="ans1" />
-                    <label htmlFor="ans1">ans1</label>
+                  <input type="radio" name={props.quiz} id={props.ans[0]} />
+                    <label htmlFor={props.ans[0]}>{props.ans[0]}</label>
                   </div>
 
           
                   <div>
-                  <input type="radio" name="ans" id="ans2" />
-                    <label htmlFor="ans2">ans2</label>
+                  <input type="radio" name={props.quiz} id={props.ans[1]} />
+                    <label htmlFor={props.ans[1]}>{props.ans[1]}</label>
                   </div>
 
                   <div>
-                  <input type="radio" name="ans" id="ans3" />
-                    <label htmlFor="ans3">ans3</label>
+                  <input type="radio" name={props.quiz} id={props.ans[2]} />
+                    <label htmlFor={props.ans[2]}>{props.ans[2]}</label>
                   </div>
 
                   <div>
-                    <input type="radio" name="ans" id="ans4" />
+                    <input type="radio" name={props.quiz} id="ans4" />
                     <label htmlFor="ans4">ans4</label>
                   </div>
           
