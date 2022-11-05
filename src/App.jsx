@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useCallback, useEffect } from "react"
 import './App.css'
 import Form from "./Components/Form"
 import Start from "./Components/Start"
@@ -20,27 +20,25 @@ function App() {
     return   <Form quiz={data.question} ans={data.incorrect_answers} />
   })
 
-  React.useEffect(()=>{
-    setCorrectAnswer(prevValue => {
-      return {
-        ...prevValue,
-        value : correct[0]
-      }
-    } ,
-    answer.map((ans) => {
+  // React.useEffect(()=>{
+  //   setCorrectAnswer(prevValue => {
+  //     return {
+  //       ...prevValue,
+  //       value : correct[0]
+  //     }
+  //   } ,
+  //   answer.map((ans) => {
 
-        setRemainingAnswer(prevValue => {
-          return {
-            ...prevValue ,
-            value : ans
-          }
-        })
-    })
-    )
-    },[])
+  //       setRemainingAnswer(prevValue => {
+  //         return {
+  //           ...prevValue ,
+  //           value : ans
+  //         }
+  //       })
+  //   })
+  //   )
+  //   },[])
 
-    console.log(correctAnswer)
-    console.log(remainingAnswer)
   // React.useEffect(()=>{
   //   setAnswers(answer) 
   // },[])
@@ -52,11 +50,33 @@ function App() {
 
 
   
-  React.useEffect(()=> {
-    axios.get('https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple')
-    .then(res => setQuestions(res.data))
-    .catch(data => console.log(data))
+  // React.useEffect(()=> {
+  //   axios.get('https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple')
+  //   .then(res => setQuestions(res.data))
+  //   .catch(data => console.log(data))
+  // },[])
+
+
+  React.useEffect(()=>{
+    const fetchData =  async () => {
+      const data = await fetch('https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple');
+      const json = await data.json();
+      dataReallocated(json.results)
+    }
+    fetchData()
   },[])
+
+  const dataReallocated = useCallback((data) => {
+    data && data.map((answers) => {
+      let correctAnswers = answers.correct_answer;
+      let incorrectAnswers = answers.incorrect_answers;
+      let allAnswers = incorrectAnswers
+      allAnswers.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)) ,0 ,correctAnswers )
+      console.log(allAnswers)
+      console.log(correctAnswers)
+    })
+  }, [])
+
 
 
 
