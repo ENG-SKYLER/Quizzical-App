@@ -7,27 +7,27 @@ function Form(props) {
 
 
 <div className='form'>
-<h1>{props.quiz} </h1>
+<h1 dangerouslySetInnerHTML={{__html: props.quiz}}/>
       <div className='answers'>
                   <div>
-                  <input type="radio" name={props.quiz} id={props.ans[0]} />
+                  <input type="radio" name={props.id} id={props.ans[0]} />
                     <label htmlFor={props.ans[0]}>{props.ans[0]}</label>
                   </div>
 
           
                   <div>
-                  <input type="radio" name={props.quiz} id={props.ans[1]} />
+                  <input type="radio" name={props.id} id={props.ans[1]} />
                     <label htmlFor={props.ans[1]}>{props.ans[1]}</label>
                   </div>
 
                   <div>
-                  <input type="radio" name={props.quiz} id={props.ans[2]} />
+                  <input type="radio" name={props.id} id={props.ans[2]} />
                     <label htmlFor={props.ans[2]}>{props.ans[2]}</label>
                   </div>
 
                   <div>
-                    <input type="radio" name={props.quiz} id="ans4" />
-                    <label htmlFor="ans4">ans4</label>
+                  <input type="radio" name={props.id} id={props.ans[3]} />
+                    <label htmlFor={props.ans[3]}>{props.ans[3]}</label>
                   </div>
           
       </div>
