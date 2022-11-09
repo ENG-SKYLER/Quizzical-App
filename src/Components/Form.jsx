@@ -11,23 +11,23 @@ function Form(props) {
       <div className='answers'>
                   <div>
                   <input type="radio" name={props.quiz} id={props.id} />
-                    <label htmlFor={props.ans[0]}>{props.ans[0]}</label>
+                    <label htmlFor={props.id}>{props.ans[0]}</label>
                   </div>
 
           
                   <div>
-                  <input type="radio" name={props.quiz} id={props.id} />
-                    <label htmlFor={props.ans[1]}>{props.ans[1]}</label>
+                  <input type="radio" name={props.quiz} id={props.id + 1} />
+                    <label htmlFor={props.id + 1}>{props.ans[1]}</label>
                   </div>
 
                   <div>
-                  <input type="radio" name={props.quiz} id={props.id} />
-                    <label htmlFor={props.ans[2]}>{props.ans[2]}</label>
+                  <input type="radio" name={props.quiz} id={props.id + 2} />
+                    <label htmlFor={props.id + 2}>{props.ans[2]}</label>
                   </div>
 
                   <div>
-                  <input type="radio" name={props.quiz} id={props.d} />
-                    <label htmlFor={props.ans[3]}>{props.ans[3]}</label>
+                  <input type="radio" name={props.quiz} id={props.d + 3} />
+                    <label htmlFor={props.id + 3}>{props.ans[3]}</label>
                   </div>
           
       </div>
