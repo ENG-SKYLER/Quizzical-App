@@ -69,6 +69,7 @@ function App() {
     fetchData()
   },[])
   const quiz = questions.map((quizz, index) => {
+    console.log(index)
     return <Form 
     quiz={quizz.question} 
     ans={quizz.answers}
