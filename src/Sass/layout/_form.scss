@@ -1,0 +1,37 @@
+@use "../util/index2" as *;
+
+.form {
+  text-align: center;
+  h1 {
+    font-family: "Karla", sans-serif;
+    font-size: rem(32);
+    font-weight: bold;
+    color: $text-color;
+  }
+  .answers {
+    display: flex;
+    justify-content: center;
+    > div {
+      margin-right: rem(16);
+      input[type="radio"] {
+        display: none;
+        &:checked + label {
+          background-color: $sel-btn;
+          border-color: $sel-btn;
+        }
+      }
+      label {
+        cursor: pointer;
+        position: relative;
+        font-weight: 500;
+        color: $text-color;
+        font-size: rem(18);
+        padding: 10px;
+        border: 1px solid $btn-color;
+        border-radius: rem(8);
+      }
+    }
+  }
+}
+
+// meme API     https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple
