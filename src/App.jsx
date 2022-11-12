@@ -74,7 +74,8 @@ function App() {
     quiz={quizz.question} 
     ans={quizz.answers}
     id = {index}
-    key = {index} />
+    // key = {index} 
+    />
   })
 
 
