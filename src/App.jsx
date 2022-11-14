@@ -3,6 +3,7 @@ import './App.css'
 import Form from "./Components/Form"
 import Start from "./Components/Start"
 import axios from "axios"
+import { nanoid } from 'nanoid'
 
 function App() {
   const [questions , setQuestions] = React.useState([])
@@ -43,13 +44,31 @@ function App() {
 
 
 
-
+function answerId(answer , correctAns){
+  if(answer === correctAns){
+    console.log(true)
+  }else{
+    console.log(false)
+  }
+}
   
-  // React.useEffect(()=> {
-  //   axios.get('https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=multiple')
-  //   .then(res => setQuestions(res.data))
-  //   .catch(data => console.log(data))
-  // },[])
+
+  // function setAns(event , questId , answersId){
+  //   setQuestions(prev => {
+  //     return (
+  //       questions.map((quizzz , quizzId) => {
+  //         if(questId === quizzId){
+  //           return ({...quizzz , ChoosedAnswer: answersId })
+  //         }else{
+  //           return (quizzz)
+  //         }
+  //       })
+  //     )
+  //   })
+  // }
+  function setAns(event){
+    console.log(event.target.id)
+  }
 
 
   React.useEffect(()=>{
@@ -63,49 +82,22 @@ function App() {
           answers : result.incorrect_answers.concat([result.correct_answer]).map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value),
           // answers : result.incorrect_answers.splice(Math.floor(Math.random()) * (result.incorrect_answers.length + 1),0 ,result.correct_answerr )
           ChoosedAnswer : undefined,
+          id : nanoid()
         })
       }))
     }
     fetchData()
   },[])
   const quiz = questions.map((quizz, index) => {
-    console.log(index)
     return <Form 
     quiz={quizz.question} 
     ans={quizz.answers}
-    id = {index}
-    // key = {index} 
+    id = {quizz.id}
+    key = {quizz.id}
+    setAns = {setAns}
     />
   })
 
-
-  // const dataReallocated = useCallback((data) => {
-  //   // data && data.map((answers) => {
-  //   //   // let correctAnswers = answers.correct_answer;
-  //   //   // setCorrect(correctAnswers)
-  //   //   // let incorrectAnswers = answers.incorrect_answers;
-  //   //   // let  allAnswers = incorrectAnswers
-  //   //   // allAnswers.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)) ,0 ,correctAnswers )
-  //   // })
-  //   setQuestions(data)
-  // }, [])
-
-// let correctAnswers ;
-//   const quiz = questions && questions.map((quizz) => {
-//      correctAnswers = quizz.correct_answer;
-//     let  incorrectAnswers = quizz.incorrect_answers;
-//     let  allAnswers = incorrectAnswers
-//     allAnswers.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)) ,0 ,correctAnswers )
-//     console.log(correctAnswers)
-//     return <Form quiz={quizz.question} ans={allAnswers} />
-//   })
-
-  // setCorrect(correctAnswers)
-
-  
-  // const form = questions.map((data) => { 
-  //   return <Form  ques = {data.question}/>
-  // })
 
 
 return (
@@ -117,3 +109,5 @@ return (
 }
 
 export default App
+
+
