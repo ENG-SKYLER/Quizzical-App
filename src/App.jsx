@@ -67,8 +67,26 @@ function answerId(answer , correctAns){
   //   })
   // }
   function setAns(event){
-    console.log(event.target.id)
+    setQuestions(questions => questions.map((quis)=> {
+      return event.target.id.slice(0 , -1) === quis.id ? {...quis , ChoosedAnswer: event.target.value} : quis
+    }))
   }
+  // function chooose(event){
+  //   questions.map((ques)=> {
+  //     if((event.target.id.slice(0 , -1)) === ques.id){
+  //       setQuestions((prev) =>{
+  //         return(
+  //           {
+  //             ...prev,
+  //             ChoosedAnswer: event.target.value
+  //           }
+  //         )
+  //       })
+  //     }
+
+  //   })
+  //   console.log(questions)
+  // }
 
 
   React.useEffect(()=>{
@@ -90,6 +108,7 @@ function answerId(answer , correctAns){
   },[])
   const quiz = questions.map((quizz, index) => {
     return <Form 
+    quiestionsArray = {questions}
     quiz={quizz.question} 
     ans={quizz.answers}
     id = {quizz.id}
@@ -98,11 +117,18 @@ function answerId(answer , correctAns){
     />
   })
 
+  function sumbitingHandling(){
+    console.log(questions)
+  }
+
+  
+
 
 
 return (
 <div>
   {quiz}
+  <button onClick={sumbitingHandling}>sumbit</button>
 </div>
     )
 
