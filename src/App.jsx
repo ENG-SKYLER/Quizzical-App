@@ -7,6 +7,8 @@ import { nanoid } from 'nanoid'
 
 function App() {
   const [questions , setQuestions] = React.useState([])
+  const [result , setResult] = React.useState(0)
+  const [showResult , setShowResult] = React.useState(false)
   // const [answers , setAnswers] = React.useState([])
   // const [correct , setCorrect] = React.useState([])
 
@@ -71,6 +73,17 @@ function answerId(answer , correctAns){
       return event.target.id.slice(0 , -1) === quis.id ? {...quis , ChoosedAnswer: event.target.value} : quis
     }))
   }
+  React.useEffect(()=>{
+    let count = 0
+    for(let i = 0 ; i < questions.length ; i++){
+      if(typeof questions[i].ChoosedAnswer !== 'undefined'){
+        if(questions[i].ChoosedAnswer === questions[i].correct){
+          count++
+        }
+      }
+    }
+    setResult(count)
+  }, [showResult])
   // function chooose(event){
   //   questions.map((ques)=> {
   //     if((event.target.id.slice(0 , -1)) === ques.id){
@@ -118,7 +131,9 @@ function answerId(answer , correctAns){
   })
 
   function sumbitingHandling(){
+    setShowResult(true)
     console.log(questions)
+    console.log(result)
   }
 
   
@@ -128,7 +143,16 @@ function answerId(answer , correctAns){
 return (
 <div>
   {quiz}
-  <button onClick={sumbitingHandling}>sumbit</button>
+  <div>
+  {showResult ? 
+  <div>
+  <h1>{`score : ${result}/5`}</h1>
+  <button>play again</button>
+  </div> :
+<button onClick={sumbitingHandling}>sumbit</button>
+}
+
+  </div>
 </div>
     )
 

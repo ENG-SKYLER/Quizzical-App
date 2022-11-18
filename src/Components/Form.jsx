@@ -5,7 +5,7 @@ function Form(props) {
   const quiztion = props.ans.map((anss, index) => {
     return (
       <div>
-      <input onClick={props.setAns} type="radio" name={props.quiz} id={props.id + index } value = {anss}/>
+      <input onClick={props.setAns} type="radio" name={props.quiz} id={props.id + index } key={props.id} value = {anss}/>
         <label   htmlFor={props.id + index}>{anss}</label>
       </div>
     )
